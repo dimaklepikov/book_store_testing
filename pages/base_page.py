@@ -1,8 +1,8 @@
-from selenium.common.exceptions import NoSuchElementException, NoSuchAttributeException, UnexpectedTagNameException
+from selenium.common.exceptions import NoSuchElementException, NoSuchAttributeException
 
 class BasePage():
 
-    def __init__(self, browser, url, timeout=3) -> None:
+    def __init__(self, browser, url, timeout=10) -> None:
         self.browser = browser
         self.url = url
         self.browser.implicitly_wait(timeout)
