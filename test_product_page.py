@@ -1,6 +1,6 @@
 import pytest
 from .pages.product_page import ProductPage
-from urls import BASE_URL
+from .urls import BASE_URL
 
 @pytest.mark.product
 def test_guest_can_add_product_to_basket(browser):

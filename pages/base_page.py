@@ -1,10 +1,10 @@
 from selenium.common.exceptions import NoSuchElementException, NoSuchAttributeException, NoAlertPresentException
 import math
-from urls import BASE_URL
+# from urls import BASE_URL
 
 class BasePage():
 
-    def __init__(self, browser, url=BASE_URL, timeout=10) -> None:
+    def __init__(self, browser, url, timeout=10) -> None:
         self.browser = browser
         self.url = url
         self.browser.implicitly_wait(timeout)
