@@ -1,6 +1,6 @@
 from selenium.common.exceptions import NoSuchElementException, NoSuchAttributeException, NoAlertPresentException
 import math
-from constants import BASE_URL
+from urls import BASE_URL
 
 class BasePage():
 
