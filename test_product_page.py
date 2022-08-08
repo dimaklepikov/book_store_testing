@@ -1,10 +1,10 @@
 import pytest
 from .pages.product_page import ProductPage
-from .urls import BASE_URL
+from .urls import Urls
 
 @pytest.mark.product
 def test_guest_can_add_product_to_basket(browser):
-    url = f"{BASE_URL}catalogue/the-shellcoders-handbook_209/?promo=newYear"
+    url = f"{Urls.BASE_URL}catalogue/the-shellcoders-handbook_209/?promo=newYear"
     page = ProductPage(browser, url)
     page.open()
     page.add_to_cart()

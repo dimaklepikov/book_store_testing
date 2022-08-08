@@ -1,6 +1,5 @@
 from selenium.common.exceptions import NoSuchElementException, NoSuchAttributeException, NoAlertPresentException
 import math
-# from urls import BASE_URL
 
 class BasePage():
 
