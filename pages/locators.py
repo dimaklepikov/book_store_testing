@@ -7,6 +7,9 @@ class MainPageLocators():
     REGISTER_EMAIL = (By.ID, "id_login-username")
     LOGIN_PASSWORD = (By.ID, "id_login-password")
     REGISTER_PASSWORD = (By.ID, "id_login-password")
+
+
+class ProductPageLocators():
     ADD_TO_CART_BUTTON = (By.CLASS_NAME, "btn.btn-lg.btn-primary.btn-add-to-basket")
     ADDED_TO_CART_MESSAGE = (By.XPATH, '//div[@class="alertinner "]/strong[1]')
     PRODUCT_PRICE = (By.XPATH, '//div[@class="col-sm-6 product_main"]/p[@class="price_color"]')
