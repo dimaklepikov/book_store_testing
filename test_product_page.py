@@ -17,7 +17,7 @@ def test_guest_can_add_product_to_basket(browser, url):
     page.product_price_should_be_equal_to_cart_price(page.get_product_price(), page.get_cart_total())
 
 
-@pytest.mark.product
+# @pytest.mark.product
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
     page = ProductPage(browser, Urls.PRODUCT_BOOK_URL)
     page.open()
@@ -25,15 +25,28 @@ def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
     page.should_not_be_success_message()
 
 
-@pytest.mark.product
+# @pytest.mark.product
 def test_guest_cant_see_success_message(browser):
     page = ProductPage(browser, Urls.PRODUCT_BOOK_URL)
     page.open()
     page.should_not_be_success_message()
 
-@pytest.mark.product
+# @pytest.mark.product
 def test_message_disappeared_after_adding_product_to_basket(browser):
     page = ProductPage(browser, Urls.PRODUCT_BOOK_URL)
     page.open()
     page.add_product_to_cart()
     page.message_should_be_disappeared()
+
+@pytest.mark.product
+def test_guest_should_see_login_link_on_product_page(browser):
+    page = ProductPage(browser, Urls.PRODUCT_BOOK_URL)
+    page.open()
+    page.should_be_login_link()
+
+@pytest.mark.product
+def test_guest_can_go_to_login_page_from_product_page(browser):
+    page = ProductPage(browser, Urls.PRODUCT_BOOK_URL)
+    page.open()
+    page.go_to_login_page()
+    page.should_be_on_login_page()

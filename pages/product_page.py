@@ -1,5 +1,5 @@
 from .base_page import BasePage
-from .locators import ProductPageLocators
+from .locators import ProductPageLocators, MainPageLocators
 
 class ProductPage(BasePage):
 
@@ -31,3 +31,7 @@ class ProductPage(BasePage):
     def message_should_be_disappeared(self):
         assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
         "Success message still displayed but should be disappeared"
+   
+    def should_be_on_login_page(self):
+        assert self.is_element_present(*MainPageLocators.LOGIN_EMAIL), \
+        "Not on login page, but should not be"

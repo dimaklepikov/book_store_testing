@@ -1,9 +1,13 @@
-from sre_constants import SUCCESS
 from selenium.webdriver.common.by import By
 
 
-class MainPageLocators():
+
+class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+
+
+class MainPageLocators():
     LOGIN_EMAIL = (By.ID, "id_login-username")
     REGISTER_EMAIL = (By.ID, "id_login-username")
     LOGIN_PASSWORD = (By.ID, "id_login-password")

@@ -3,12 +3,21 @@ from selenium.common.exceptions import NoSuchElementException, NoSuchAttributeEx
 from selenium.webdriver.support.ui import WebDriverWait
 import math
 
+from .locators import BasePageLocators
+
 class BasePage():
 
-    def __init__(self, browser, url, timeout=10) -> None:
+    def __init__(self, browser, url, timeout=0) -> None:
         self.browser = browser
         self.url = url
-        # self.browser.implicitly_wait(timeout)
+        self.browser.implicitly_wait(timeout)
+        
+    def go_to_login_page(self):
+        link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
+        link.click()     
+
+    def should_be_login_link(self):
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
 
     def is_element_present(self, how, what):
         try:
