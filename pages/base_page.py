@@ -8,7 +8,7 @@ class BasePage():
     def __init__(self, browser, url, timeout=10) -> None:
         self.browser = browser
         self.url = url
-        self.browser.implicitly_wait(timeout)
+        # self.browser.implicitly_wait(timeout)
 
     def is_element_present(self, how, what):
         try:
@@ -33,9 +33,6 @@ class BasePage():
             return False
 
         return True
-    
-    def should_not_be_success_message(self):
-        pass
 
     def open(self):
         self.browser.get(self.url)

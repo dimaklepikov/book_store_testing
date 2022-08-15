@@ -1,3 +1,4 @@
+from sre_constants import SUCCESS
 from selenium.webdriver.common.by import By
 
 
@@ -15,3 +16,4 @@ class ProductPageLocators():
     PRODUCT_PRICE = (By.XPATH, '//div[@class="col-sm-6 product_main"]/p[@class="price_color"]')
     CART_TOTAL = (By.XPATH, '//div[@class="alertinner "]/p/strong')
     PRODUCT_TITLE = (By.XPATH, '//div[@class="col-sm-6 product_main"]/h1')
+    SUCCESS_MESSAGE = (By.XPATH, '//div[@id="messages"]/div[1]')

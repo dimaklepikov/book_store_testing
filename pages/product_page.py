@@ -3,7 +3,7 @@ from .locators import ProductPageLocators
 
 class ProductPage(BasePage):
 
-    def add_to_cart(self):
+    def add_product_to_cart(self):
         self.browser.find_element(*ProductPageLocators.ADD_TO_CART_BUTTON).click()
 
     def get_product_title(self):
@@ -27,3 +27,7 @@ class ProductPage(BasePage):
     def should_not_be_success_message(self):
         assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
         "Success message is presented, but should not be"
+    
+    def message_should_be_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+        "Success message still displayed but should be disappeared"
