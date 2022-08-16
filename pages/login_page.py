@@ -28,3 +28,6 @@ class LoginPage(BasePage):
         self.browser.find_element(*LoginPageLocators.EMAIL_REGISTER_FIELD).send_keys(email)
         self.browser.find_element(*LoginPageLocators.PASSWORD_REGISTER_FIELD).send_keys(password)
         self.browser.find_element(*LoginPageLocators.CONFIRM_PASSWORD_REGISTER_FIELD).send_keys(password)
+        self.browser.find_element(*LoginPageLocators.REGISTER_BUTTON).click()
+        assert self.wait_untill_element_is_present(), "Error, No such element"
+        assert True

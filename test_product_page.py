@@ -5,7 +5,6 @@ from .pages.product_page import ProductPage
 from .pages.login_page import LoginPage
 from .urls import Urls
 
-# TODO: Add test logic user, understand where previous tests are
 class TestUserAddToBasketFromProductPage():
     
     def test_user_can_go_to_login_page(self, browser):

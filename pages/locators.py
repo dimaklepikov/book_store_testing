@@ -1,7 +1,5 @@
 from selenium.webdriver.common.by import By
 
-
-
 class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
@@ -31,3 +29,5 @@ class LoginPageLocators():
     EMAIL_REGISTER_FIELD = (By.XPATH, '//input[@name="registration-email"]')
     PASSWORD_REGISTER_FIELD = (By.XPATH, '//input[@name="registration-password1"]')
     CONFIRM_PASSWORD_REGISTER_FIELD = (By.NAME, 'registration-password2')
+    REGISTER_BUTTON = (By.NAME, 'registration_submit')
+    OK_ICON = (By.CLASS_NAME, 'icon-ok-sign')

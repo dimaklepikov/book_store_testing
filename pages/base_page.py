@@ -22,6 +22,10 @@ class BasePage():
     def go_to_cart(self):
         link = self.browser.find_element(*BasePageLocators.CART_LINK)
         link.click()
+        
+    # TODO: Add logic for this method
+    def wait_untill_element_is_present(self, how, what, timeout):
+        pass
 
     def is_element_present(self, how, what):
         try:
