@@ -26,3 +26,8 @@ class ProductPageLocators():
 class CartPageLocators():
     EMPTY_CART_MESSAGE = (By.XPATH, '//p[contains(text(), "empty")]')
     CART_ITEMS = (By.CLASS_NAME, 'basket-items')
+    
+class LoginPageLocators():
+    EMAIL_REGISTER_FIELD = (By.XPATH, '//input[@name="registration-email"]')
+    PASSWORD_REGISTER_FIELD = (By.XPATH, '//input[@name="registration-password1"]')
+    CONFIRM_PASSWORD_REGISTER_FIELD = (By.NAME, 'registration-password2')
