@@ -26,7 +26,6 @@ class BasePage():
         link = self.browser.find_element(*BasePageLocators.CART_LINK)
         link.click()
         
-    # TODO: Add logic for this method
     def wait_untill_element_is_present(self, how, what, timeout=5):
         try:
             WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
