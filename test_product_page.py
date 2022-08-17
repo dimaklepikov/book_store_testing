@@ -1,23 +1,34 @@
 import pytest
+from faker import Faker
 
 from .pages.cart_page import CartPage
 from .pages.product_page import ProductPage
 from .pages.login_page import LoginPage
 from .urls import Urls
 
-class TestUserAddToBasketFromProductPage():
-    
-    def test_user_can_go_to_login_page(self, browser):
-        page = ProductPage(browser, Urls.PRODUCT_BOOK_URL)
-        page.open()
-        page.go_to_login_page()
-        login_page = LoginPage(browser=browser, url=browser.current_url)
-        login_page.should_be_login_page()
+fake = Faker()
 
-    def test_user_should_see_login_link(self,browser):
-        page = ProductPage(browser, Urls.PRODUCT_BOOK_URL)
-        page.open()
-        page.should_be_login_link()
+@pytest.mark.user
+class TestUserAddToBasketFromProductPage():
+    @pytest.fixture(scope="function", autouse=True)
+    def setup(self, browser):
+        self.login_page = LoginPage(browser, Urls.LOGIN_URL)
+        self.login_page.open()
+        self.login_page.register_user(email=fake.email(), password=fake.password())
+        self.login_page.should_be_authorized_user()
+
+    def test_user_can_add_product_to_basket(self, browser):
+        browser.delete_all_cookies()
+        self.page = ProductPage(browser, Urls.PRODUCT_BOOK_URL)
+        self.page.open()
+        self.page.add_product_to_cart()
+        self.page.product_should_be_in_cart(self.page.get_product_title(), self.page.get_cart_addition_message())
+        self.page.product_price_should_be_equal_to_cart_price(self.page.get_product_price(), self.page.get_cart_total())
+            
+    def test_user_cant_see_success_message(self, browser):
+        self.page = ProductPage(browser, Urls.PRODUCT_BOOK_URL)
+        self.page.open()
+        self.page.should_not_be_success_message()
 
 
 # TODO: Make only one parameter from list have xfail mark
@@ -37,7 +48,11 @@ def test_guest_can_add_product_to_basket(browser, url):
         page.product_price_should_be_equal_to_cart_price(page.get_product_price(), page.get_cart_total())
     except AssertionError:
         pytest.xfail("Wrong book title")
-
+        
+def test_guest_cant_see_success_message(browser):
+    page = ProductPage(browser, Urls.PRODUCT_BOOK_URL)
+    page.open()
+    page.should_not_be_success_message()
 
 # @pytest.mark.product
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
@@ -45,14 +60,6 @@ def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
     page.open()
     page.add_product_to_cart()
     page.should_not_be_success_message()
-
-
-# @pytest.mark.product
-def test_guest_cant_see_success_message(browser):
-    page = ProductPage(browser, Urls.PRODUCT_BOOK_URL)
-    page.open()
-    page.should_not_be_success_message()
-
 
 # @pytest.mark.product
 def test_message_disappeared_after_adding_product_to_basket(browser):

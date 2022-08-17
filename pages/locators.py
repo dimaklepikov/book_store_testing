@@ -4,6 +4,7 @@ class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
     CART_LINK = (By.XPATH, '//div[@class="basket-mini pull-right hidden-xs"]/span/a')
+    LOGINED_USER_ICON = (By.CLASS_NAME, 'icon-user')
 
 
 class MainPageLocators():
@@ -26,7 +27,7 @@ class CartPageLocators():
     CART_ITEMS = (By.CLASS_NAME, 'basket-items')
     
 class LoginPageLocators():
-    EMAIL_REGISTER_FIELD = (By.XPATH, '//input[@name="registration-email"]')
+    EMAIL_REGISTER_FIELD = (By.ID, 'id_registration-email')
     PASSWORD_REGISTER_FIELD = (By.XPATH, '//input[@name="registration-password1"]')
     CONFIRM_PASSWORD_REGISTER_FIELD = (By.NAME, 'registration-password2')
     REGISTER_BUTTON = (By.NAME, 'registration_submit')

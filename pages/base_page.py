@@ -19,13 +19,22 @@ class BasePage():
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
         
+    def should_be_authorized_user(self):
+        assert self.wait_untill_element_is_present(*BasePageLocators.LOGINED_USER_ICON), "User is not logged in"
+        
     def go_to_cart(self):
         link = self.browser.find_element(*BasePageLocators.CART_LINK)
         link.click()
         
     # TODO: Add logic for this method
-    def wait_untill_element_is_present(self, how, what, timeout):
-        pass
+    def wait_untill_element_is_present(self, how, what, timeout=5):
+        try:
+            WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
+        except TimeoutException:
+            return False
+
+        return True
+    
 
     def is_element_present(self, how, what):
         try:
