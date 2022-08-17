@@ -16,3 +16,7 @@ def browser():
     browser = webdriver.Chrome()
     yield browser
     browser.quit()
+    
+# @pytest.fixture
+# def delete_cookies():
+#    browser.delete_all_cookies()

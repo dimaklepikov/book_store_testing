@@ -46,18 +46,21 @@ def test_guest_can_add_product_to_basket(browser, url):
         page.product_price_should_be_equal_to_cart_price(page.get_product_price(), page.get_cart_total())
     except AssertionError:
         pytest.xfail("Wrong book title")
-        
+
+@pytest.mark.xfail       
 def test_guest_cant_see_success_message(browser):
     page = ProductPage(browser, Urls.PRODUCT_BOOK_URL)
     page.open()
     page.should_not_be_success_message()
 
+@pytest.mark.xfail
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
     page = ProductPage(browser, Urls.PRODUCT_BOOK_URL)
     page.open()
     page.add_product_to_cart()
     page.should_not_be_success_message()
 
+@pytest.mark.xfail
 def test_message_disappeared_after_adding_product_to_basket(browser):
     page = ProductPage(browser, Urls.PRODUCT_BOOK_URL)
     page.open()
@@ -77,6 +80,7 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page.should_be_on_login_page()
 
 def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    browser.delete_all_cookies()
     page = CartPage(browser, Urls.PRODUCT_BOOK_URL)
     page.open()
     page.go_to_cart()
