@@ -5,6 +5,7 @@
 ## How to install
 1. Create virtual envirinment with Python v3.9. I use conda:
 ```sh
+conda deactivate
 conda create -n your_env_name python=3.9
 conda activate your_env_name
 ```
