@@ -34,9 +34,9 @@ pytest -v --tb=line -m need_review
 ```
 2. You can specify language in --language flag. The default is eng.
 For example:
--gr
--de
--po
+- gr
+- de
+- po
 You cal see the full list of avaliable languages in the [store](http://selenium1py.pythonanywhere.com/) left corner
 ```sh
 pytest -v --tb=line --language=en
